@@ -5,8 +5,10 @@ stages:
     displayName: Build stage
     jobs:
       - job:  Build
-        pool: "vs2017-win2016"
         displayName:  build job
+        pool:
+          name: "Azure Pipelines"
+          vmImage: "vs2017-win2016"
         steps:
         - task: PowerShell@2
           inputs:
