@@ -2,23 +2,38 @@
 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
-        "resourceName": {
-			"value": "GEN-UNIQUE"
+        "AKSClusterName": {
+			"value": "adp-eshop-aks"
 		},
 		"dnsPrefix": {
 			"value": "GEN-UNIQUE"
 		},
 		"linuxAdminUsername": {
-			"value": "GEN-UNIQUE"
+			"value": "ashish"
 		},
 		"sshRSAPublicKey": {
-			"value": "GEN-SSH-PUB-KEY"
+			"reference": {
+				"keyVault": {
+					"id": "/subscriptions/9c326498-2371-4955-8465-8a7f665db362/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/emc-share-vault"
+				},
+				"secretName": "aksSSHPubKey"
+			}
 		},
 		"servicePrincipalClientId": {
-			"value": "GEN-GUID"
+			"reference": {
+				"keyVault": {
+					"id": "/subscriptions/9c326498-2371-4955-8465-8a7f665db362/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/emc-share-vault"
+				},
+				"secretName": "AksSPClientID"
+			}
 		},
 		"servicePrincipalClientSecret": {
-			"value": "GEN-UNIQUE"
+			"reference": {
+				"keyVault": {
+					"id": "/subscriptions/9c326498-2371-4955-8465-8a7f665db362/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/emc-share-vault"
+				},
+				"secretName": "AKSSPClientKey"
+			}
 		}
 	}
 }
