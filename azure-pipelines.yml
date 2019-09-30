@@ -1,5 +1,11 @@
 trigger:
-- dev
+  branches:
+    include:
+      - dev
+  paths:
+    include:
+      - k8s/aks/azuredeploy.json
+      - k8s/aks/azuredeploy.parameters.json
 stages:
   - stage: Build
     displayName: Build stage
