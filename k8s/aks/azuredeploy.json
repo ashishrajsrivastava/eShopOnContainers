@@ -91,13 +91,6 @@
             "metadata": {
                 "description": "The version of Kubernetes."
             }
-        },
-        "enableRBAC": {
-           "type": "bool",
-           "defaultValue": true,
-           "metadata": {
-                "description": "Boolean flag to turn on and off of RBAC."
-            }
         }
     },
     "resources": [
@@ -108,7 +101,7 @@
             "name": "[parameters('AKSClusterName')]",
             "properties": {
                 "kubernetesVersion": "[parameters('kubernetesVersion')]",
-                "enableRBAC": "[parameters('enableRBAC')]",
+                "enableRBAC": true,
                 "dnsPrefix": "[parameters('dnsPrefix')]",
                 "agentPoolProfiles": [
                     {
