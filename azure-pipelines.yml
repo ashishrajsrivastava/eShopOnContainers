@@ -1,0 +1,24 @@
+trigger:
+  branches:
+    include:
+      - dev
+  paths:
+    include:
+      - k8s/aks/azuredeploy.json
+      - k8s/aks/azuredeploy.parameters.json
+stages:
+  - stage: Build
+    displayName: Build stage
+    jobs:
+      - job:  Build
+        displayName:  build job
+        pool:
+          name: "Azure Pipelines"
+          vmImage: "vs2017-win2016"
+        steps:
+        - task: PowerShell@2
+          inputs:
+            targetType: 'inline'
+            script: |
+              # Write your PowerShell commands here.
+              Write-Host "Hello World"
