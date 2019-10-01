@@ -280,4 +280,3 @@ pub/
 src/**/app.yaml
 src/**/inf.yaml
 
-/k8s/aks/

@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+        "AKSClusterName": {
+			"value": "adp-eshop-aks"
+		},
+		"dnsPrefix": {
+			"value": "GEN-UNIQUE"
+		},
+		"linuxAdminUsername": {
+			"value": "ashish"
+		},
+		"sshRSAPublicKey": {
+			"reference": {
+				"keyVault": {
+					"id": "/subscriptions/sub-id/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/vault-name"
+				},
+				"secretName": "aksSSHPubKey"
+			}
+		},
+		"servicePrincipalClientId": {
+			"reference": {
+				"keyVault": {
+					"id": "/subscriptions/sub-id/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/vault-name"
+				},
+				"secretName": "AksSPClientID"
+			}
+		},
+		"servicePrincipalClientSecret": {
+			"reference": {
+				"keyVault": {
+					"id": "/subscriptions/sub-id/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/vault-name"
+				},
+				"secretName": "AKSSPClientKey"
+			}
+		}
+	}
+}
