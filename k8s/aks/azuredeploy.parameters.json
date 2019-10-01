@@ -14,7 +14,7 @@
 		"sshRSAPublicKey": {
 			"reference": {
 				"keyVault": {
-					"id": "/subscriptions/9c326498-2371-4955-8465-8a7f665db362/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/emc-share-vault"
+					"id": "/subscriptions/sub-id/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/vault-name"
 				},
 				"secretName": "aksSSHPubKey"
 			}
@@ -22,7 +22,7 @@
 		"servicePrincipalClientId": {
 			"reference": {
 				"keyVault": {
-					"id": "/subscriptions/9c326498-2371-4955-8465-8a7f665db362/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/emc-share-vault"
+					"id": "/subscriptions/sub-id/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/vault-name"
 				},
 				"secretName": "AksSPClientID"
 			}
@@ -30,7 +30,7 @@
 		"servicePrincipalClientSecret": {
 			"reference": {
 				"keyVault": {
-					"id": "/subscriptions/9c326498-2371-4955-8465-8a7f665db362/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/emc-share-vault"
+					"id": "/subscriptions/sub-id/resourceGroups/emc-share-rg/providers/Microsoft.KeyVault/vaults/vault-name"
 				},
 				"secretName": "AKSSPClientKey"
 			}
