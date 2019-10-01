@@ -22,3 +22,6 @@ stages:
             script: |
               # Write your PowerShell commands here.
               Write-Host "Hello World"
+        - task: AzSKARMTemplateChecker@4
+          inputs:
+            ARMTemplateFilePath: '$(System.DefaultWorkingDirectory)\k8s\aks\'
