@@ -7,7 +7,7 @@ trigger:
       - k8s/aks/azuredeploy.json
 stages:
   - stage: Build
-    displayName: Build stage
+    displayName: Build
     jobs:
       - job:  Build
         displayName:  build job
