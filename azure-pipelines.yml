@@ -5,7 +5,6 @@ trigger:
   paths:
     include:
       - k8s/aks/azuredeploy.json
-      - k8s/aks/azuredeploy.parameters.json
 stages:
   - stage: Build
     displayName: Build stage
@@ -22,6 +21,14 @@ stages:
             script: |
               # Write your PowerShell commands here.
               Write-Host "Validating ARM Template"
-        - task: AzSKARMTemplateChecker@4
-          inputs:
-            ARMTemplateFilePath: '$(System.DefaultWorkingDirectory)\k8s\aks\'
+  - stage: Deploy
+    displayName: Deploy AKS infra
+    jobs:
+      - job: Deploy
+        displayName: Deploy AKS infra
+        pool:
+          name: "Azure Pipelines"
+          vmImage: "vs2017-win2016"
+        steps:
+          - 
+        
