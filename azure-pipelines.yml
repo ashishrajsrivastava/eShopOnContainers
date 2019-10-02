@@ -29,6 +29,17 @@ stages:
         pool:
           name: "Azure Pipelines"
           vmImage: "vs2017-win2016"
-        steps:
-          - 
+        steps: 
+        - task: AzureResourceManagerTemplateDeployment@3
+          inputs:
+            deploymentScope: 'Resource Group'
+            ConnectedServiceName: 'EMC-Azure'
+            subscriptionName: '9c326498-2371-4955-8465-8a7f665db362'
+            action: 'Create Or Update Resource Group'
+            resourceGroupName: 'aks-demo'
+            location: 'South Central US'
+            templateLocation: 'Linked artifact'
+            csmFile: 'k8s/aks/azuredeploy.json'
+            overrideParameters: '-AKSClusterName $(ClusterName)'
+            deploymentMode: 'Incremental'
         
