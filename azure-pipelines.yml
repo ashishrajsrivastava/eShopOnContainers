@@ -21,7 +21,7 @@ stages:
             targetType: 'inline'
             script: |
               # Write your PowerShell commands here.
-              Write-Host "Hello World"
+              Write-Host "Validating ARM Template"
         - task: AzSKARMTemplateChecker@4
           inputs:
             ARMTemplateFilePath: '$(System.DefaultWorkingDirectory)\k8s\aks\'
