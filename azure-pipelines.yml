@@ -21,6 +21,9 @@ stages:
             script: |
               # Write your PowerShell commands here.
               Write-Host "Validating ARM Template"
+        - task: AzSKARMTemplateChecker@4
+          inputs:
+            ARMTemplateFilePath: 'k8s/aks/azuredeploy.json'
   - stage: Deploy
     displayName: Deploy AKS infra
     jobs:
