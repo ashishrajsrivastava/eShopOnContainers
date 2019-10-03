@@ -5,10 +5,9 @@ trigger:
   paths:
     include:
       - k8s/aks/azuredeploy.json
-      - k8s/aks/azuredeploy.parameters.json
 stages:
   - stage: Build
-    displayName: Build stage
+    displayName: Build
     jobs:
       - job:  Build
         displayName:  build job
@@ -21,7 +20,30 @@ stages:
             targetType: 'inline'
             script: |
               # Write your PowerShell commands here.
-              Write-Host "Hello World"
+              Write-Host "Validating ARM Template"
         - task: AzSKARMTemplateChecker@4
+          enabled: false
           inputs:
-            ARMTemplateFilePath: '$(System.DefaultWorkingDirectory)\k8s\aks\'
+            ARMTemplateFilePath: 'k8s/aks/azuredeploy.json'
+  - stage: Deploy
+    displayName: Deploy AKS infra
+    jobs:
+      - job: Deploy
+        displayName: Deploy AKS infra
+        pool:
+          name: "Azure Pipelines"
+          vmImage: "vs2017-win2016"
+        steps: 
+        - task: AzureResourceManagerTemplateDeployment@3
+          inputs:
+            deploymentScope: 'Resource Group'
+            ConnectedServiceName: 'EMC-Azure'
+            subscriptionName: '9c326498-2371-4955-8465-8a7f665db362'
+            action: 'Create Or Update Resource Group'
+            resourceGroupName: 'aks-demo'
+            location: 'South Central US'
+            templateLocation: 'Linked artifact'
+            csmFile: 'k8s/aks/azuredeploy.json'
+            overrideParameters: '-AKSClusterName $(ClusterName)'
+            deploymentMode: 'Incremental'
+        
