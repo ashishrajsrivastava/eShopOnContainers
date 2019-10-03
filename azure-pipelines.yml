@@ -33,7 +33,14 @@ stages:
         pool:
           name: "Azure Pipelines"
           vmImage: "vs2017-win2016"
-        steps: 
+        steps:
+
+        - task: AzureKeyVault@1
+          inputs:
+             azureSubscription: 'EMC-Azure'
+             KeyVaultName: 'emc-share-vault'
+             SecretsFilter: '*'
+
         - task: AzureResourceManagerTemplateDeployment@3
           inputs:
             deploymentScope: 'Resource Group'
