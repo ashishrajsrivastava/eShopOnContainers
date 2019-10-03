@@ -4,7 +4,7 @@
     "parameters": {
         "AKSClusterName": {
             "type": "string",
-            "defaultValue":"aks101cluster",
+            "defaultValue": "aks101cluster",
             "metadata": {
                 "description": "The name of the Managed Cluster resource."
             }
@@ -91,6 +91,30 @@
             "metadata": {
                 "description": "The version of Kubernetes."
             }
+        },
+        "AADServerAppID": {
+           "type": "securestring",
+           "metadata": {
+                "description": "AKS AD Server App ID"
+            }
+        },
+        "AADServerSecret": {
+           "type": "securestring",
+           "metadata": {
+                "description": "AKS AD Server App secret"
+            }
+        },
+        "AADClientAppID": {
+           "type": "securestring",
+           "metadata": {
+                "description": "AKS AD Client App ID"
+            }
+        },
+        "TenantID": {
+           "type": "securestring",
+           "metadata": {
+                "description": "AAD tenant ID"
+            }
         }
     },
     "resources": [
@@ -126,6 +150,12 @@
                 "servicePrincipalProfile": {
                     "clientId": "[parameters('servicePrincipalClientId')]",
                     "Secret": "[parameters('servicePrincipalClientSecret')]"
+                },
+                "aadProfile": {
+                    "clientAppID": "[parameters('AADClientAppID')]",
+                    "serverAppID": "[parameters('AADServerAppID')]",
+                    "serverAppSecret": "[parameters('AADServerSecret')]",
+                    "tenantID": "[parameters('TenantID')]"
                 }
             }
         }
