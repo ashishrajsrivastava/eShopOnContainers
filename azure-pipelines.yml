@@ -51,6 +51,6 @@ stages:
             location: 'South Central US'
             templateLocation: 'Linked artifact'
             csmFile: 'k8s/aks/azuredeploy.json'
-            overrideParameters: '-AKSClusterName $(ClusterName) -dnsPrefix $(dnsPrefix) -osDiskSizeGB 100 -linuxAdminUsername $(linuxAdminUsername) -sshRSAPublicKey $(aksSSHPubKey) -servicePrincipalClientId $(AksSPClientID) -servicePrincipalClientSecret $(AKSSPClientKey) -AADServerAppID $(AKSAzureADServerAppID) -AADServerSecret $(AKSAzureADServerSecret) -AADClientAppID $(AKSAzureADClientAppID) -TenantID $(AADTenantID)'
+            overrideParameters: '-AKSClusterName "adp-aks-demo" -dnsPrefix "adpaksdemo" -osDiskSizeGB 100 -linuxAdminUsername "ashishaks" -sshRSAPublicKey $(aksSSHPubKey) -servicePrincipalClientId $(AksSPClientID) -servicePrincipalClientSecret $(AKSSPClientKey) -AADServerAppID $(AKSAzureADServerAppID) -AADServerSecret $(AKSAzureADServerSecret) -AADClientAppID $(AKSAzureADClientAppID) -TenantID $(AADTenantID)'
             deploymentMode: 'Incremental'
         
